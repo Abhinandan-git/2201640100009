@@ -6,7 +6,7 @@ interface Information {
 }
 
 const Log = async (stack: Information["stack"], level: Information["level"], package: Information["packages"], message: Information["message"]): Promise<void> => {
-	const result = await fetch("", {
+	await fetch("http://20.244.56.144/evaluation-service/logs", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
@@ -18,21 +18,4 @@ const Log = async (stack: Information["stack"], level: Information["level"], pac
 			"message": message
 		}),
 	});
-	// const result = await fetch("http://20.244.56.144/evaluation-service/logs", {
-	// 	method: "POST",
-	// 	headers: {
-	// 		"Content-Type": "application/json",
-	// 	},
-	// 	body: JSON.stringify({
-	// 		"stack": stack,
-	// 		"level": level,
-	// 		"package": package,
-	// 		"message": message
-	// 	}),
-	// });
-	if (result?.status === 200) {
-		console.log(result?.body);
-	} else {
-		console.log("DEF");
-	}
 }
