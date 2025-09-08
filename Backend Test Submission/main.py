@@ -17,3 +17,4 @@ def log(stack: str, level: str, package: str, message: str):
 		"package": package,
 		"message": message
 	})
+	return response.json()
